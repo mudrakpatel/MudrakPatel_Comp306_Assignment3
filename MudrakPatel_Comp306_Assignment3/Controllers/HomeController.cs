@@ -17,14 +17,14 @@ namespace MudrakPatel_Comp306_Assignment3.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewData["Message"] = "About Mudrak movies site";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
+            ViewData["Message"] = "Stay in touch";
 
             return View();
         }
