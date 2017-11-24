@@ -7,6 +7,8 @@ namespace MudrakPatel_Comp306_Assignment3.Models
 {
     public class Movie
     {
+        //Parameterless constructor
+        //public Movie() { }
         public int ID { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }

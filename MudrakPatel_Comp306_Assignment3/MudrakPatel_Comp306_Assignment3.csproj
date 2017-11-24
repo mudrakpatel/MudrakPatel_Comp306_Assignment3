@@ -5,6 +5,17 @@
     <UserSecretsId>aspnet-MudrakPatel_Comp306_Assignment3-74A9DE58-8BC6-42F9-9045-E15FBD49E8FB</UserSecretsId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Views\Movies\**" />
+    <Content Remove="Views\Movies\**" />
+    <EmbeddedResource Remove="Views\Movies\**" />
+    <None Remove="Views\Movies\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\MoviesController.cs" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />

@@ -8,6 +8,11 @@ namespace MudrakPatel_Comp306_Assignment3.Data
 {
     public class MovieContext : DbContext
     {
+        //Parameterless constructor
+        public MovieContext()
+            : base()
+        {
+        }
         public MovieContext(DbContextOptions<MovieContext> options)
             : base(options)
         {
