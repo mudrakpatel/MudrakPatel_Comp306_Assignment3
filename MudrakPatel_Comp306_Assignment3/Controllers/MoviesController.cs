@@ -4,25 +4,49 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using MudrakPatel_Comp306_Assignment3.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace MudrakPatel_Comp306_Assignment3.Controllers
 {
     public class MoviesController : Controller
     {
-        // GET: Movies
-        public ActionResult Index()
+        private readonly MovieContext _context;
+
+        public MoviesController(MovieContext context)
         {
-            return View();
+            _context = context;
         }
+
+
+        // GET: Movies
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Movie.ToListAsync());
+        }
+
 
         // GET: Movies/Details/5
-        public ActionResult Details(int id)
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var movie = await _context.Movie
+                .SingleOrDefaultAsync(m => m.ID == id);
+            if (movie == null)
+            {
+                return NotFound();
+            }
+
+            return View(movie);
         }
 
+
         // GET: Movies/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             return View();
         }
@@ -30,7 +54,7 @@ namespace MudrakPatel_Comp306_Assignment3.Controllers
         // POST: Movies/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create(IFormCollection collection)
         {
             try
             {
